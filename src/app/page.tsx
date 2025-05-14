@@ -52,7 +52,7 @@ export default function Home() {
           <form
             name="contact"
             method="POST"
-            data-netlify="true"
+            action="/api/contact"
             className="space-y-6"
           >
             <input type="hidden" name="form-name" value="contact" />
