@@ -17,7 +17,7 @@ type AppointmentState =
 
 const initialMessages: Message[] = [
   {
-    text: "Hello! I'm your IAM Home Health Care Services assistant. How can I help you today?",
+    text: "Hello! I'm your IAM Home Health Care Services assistant. How can I help you today? (Please do not share sensitive information such as SSN, insurance numbers, or medical history.)",
     isBot: true
   }
 ];
@@ -105,6 +105,27 @@ const commonQuestions = [
   }
 ];
 
+// Patterns for sensitive data (SSN, credit card, insurance, etc.)
+const sensitivePatterns = [
+  /\b\d{3}-?\d{2}-?\d{4}\b/, // SSN
+  /\b\d{16}\b/, // 16-digit card
+  /\b\d{4} \d{4} \d{4} \d{4}\b/, // 4x4 card
+  /insurance/i,
+  /medical history/i,
+  /password/i,
+  /social security/i,
+  /ssn/i,
+  /credit card/i,
+  /debit card/i,
+  /bank account/i,
+  /account number/i,
+];
+
+function sanitize(input: string) {
+  // Basic sanitization to prevent XSS
+  return input.replace(/[<>]/g, '');
+}
+
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>(initialMessages);
@@ -125,19 +146,34 @@ export default function Chatbot() {
     e.preventDefault();
     if (!input.trim()) return;
 
+    // Sanitize input
+    const sanitizedInput = sanitize(input);
+
+    // Security: block sensitive info
+    for (const pattern of sensitivePatterns) {
+      if (pattern.test(sanitizedInput)) {
+        setMessages(prev => [
+          ...prev,
+          { text: "For your privacy and security, please do not share sensitive information such as SSN, insurance numbers, or medical history here. If you need to discuss sensitive matters, please call us directly.", isBot: true }
+        ]);
+        setInput('');
+        return;
+      }
+    }
+
     // Add user message
-    const userMessage: Message = { text: input, isBot: false };
+    const userMessage: Message = { text: sanitizedInput, isBot: false };
     setMessages(prev => [...prev, userMessage]);
 
     // Appointment scheduling flow
     if (appointmentState) {
-      handleAppointmentFlow(input);
+      handleAppointmentFlow(sanitizedInput);
       setInput('');
       return;
     }
 
     // Check for appointment intent
-    if (/schedule|appointment|book|consult/i.test(input)) {
+    if (/schedule|appointment|book|consult/i.test(sanitizedInput)) {
       setTimeout(() => {
         setMessages(prev => [
           ...prev,
@@ -151,8 +187,8 @@ export default function Chatbot() {
 
     // Simulate bot response for common questions
     setTimeout(() => {
-      const question = input.toLowerCase();
-      let response = "I'm sorry, I don't have information about that. Please contact us directly for more details.";
+      const question = sanitizedInput.toLowerCase();
+      let response = "I'm sorry, I can't answer that. For privacy and security, please do not share sensitive information. For other questions, please contact us directly.";
       for (const q of commonQuestions) {
         if (question.includes(q.question.toLowerCase())) {
           response = q.answer;
@@ -166,8 +202,21 @@ export default function Chatbot() {
   };
 
   function handleAppointmentFlow(userInput: string) {
+    // Sanitize input
+    const sanitizedInput = sanitize(userInput);
+    // Security: block sensitive info
+    for (const pattern of sensitivePatterns) {
+      if (pattern.test(sanitizedInput)) {
+        setMessages(prev => [
+          ...prev,
+          { text: "For your privacy and security, please do not share sensitive information such as SSN, insurance numbers, or medical history here. If you need to discuss sensitive matters, please call us directly.", isBot: true }
+        ]);
+        setInput('');
+        return;
+      }
+    }
     if (appointmentState === 'collect_name') {
-      setAppointmentData(data => ({ ...data, name: userInput }));
+      setAppointmentData(data => ({ ...data, name: sanitizedInput }));
       setMessages(prev => [
         ...prev,
         { text: "Thanks! What's your email address?", isBot: true }
@@ -176,7 +225,7 @@ export default function Chatbot() {
       return;
     }
     if (appointmentState === 'collect_email') {
-      setAppointmentData(data => ({ ...data, email: userInput }));
+      setAppointmentData(data => ({ ...data, email: sanitizedInput }));
       setMessages(prev => [
         ...prev,
         { text: "What date would you like to schedule your appointment for? (e.g., 2024-06-15)", isBot: true }
@@ -185,7 +234,7 @@ export default function Chatbot() {
       return;
     }
     if (appointmentState === 'collect_date') {
-      setAppointmentData(data => ({ ...data, date: userInput }));
+      setAppointmentData(data => ({ ...data, date: sanitizedInput }));
       setMessages(prev => [
         ...prev,
         { text: "What time works best for you? (e.g., 2:00 PM)", isBot: true }
@@ -195,7 +244,7 @@ export default function Chatbot() {
     }
     if (appointmentState === 'collect_time') {
       setAppointmentData(data => {
-        const newData = { ...data, time: userInput };
+        const newData = { ...data, time: sanitizedInput };
         setMessages(prev => [
           ...prev,
           { text: "Thank you! Your appointment request has been received. Here is a summary:", isBot: true },
@@ -203,7 +252,6 @@ export default function Chatbot() {
           { text: "We will contact you at your email to confirm the details.", isBot: true }
         ]);
         setAppointmentState('confirm');
-        // Optionally, send appointmentData to backend here
         setTimeout(() => {
           setAppointmentState(null);
           setAppointmentData({});
