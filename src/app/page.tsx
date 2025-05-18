@@ -91,6 +91,23 @@ export default function Home() {
           >
             <input type="hidden" name="form-name" value="contact" />
             <div>
+              <label className="block font-semibold mb-2">I am a:</label>
+              <div className="flex flex-wrap gap-4">
+                <label className="flex items-center gap-2">
+                  <input type="radio" name="contactType" value="Patient" required className="accent-blue-600" /> Patient
+                </label>
+                <label className="flex items-center gap-2">
+                  <input type="radio" name="contactType" value="Healthcare provider" className="accent-blue-600" /> Healthcare provider
+                </label>
+                <label className="flex items-center gap-2">
+                  <input type="radio" name="contactType" value="Vendor" className="accent-blue-600" /> Vendor
+                </label>
+                <label className="flex items-center gap-2">
+                  <input type="radio" name="contactType" value="Other" className="accent-blue-600" /> Other
+                </label>
+              </div>
+            </div>
+            <div>
               <input
                 type="text"
                 name="name"
