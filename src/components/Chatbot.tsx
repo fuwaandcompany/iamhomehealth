@@ -194,17 +194,22 @@ export default function Chatbot() {
       return;
     }
     if (appointmentState === 'collect_time') {
-      setAppointmentData(data => ({ ...data, time: userInput }));
-      setMessages(prev => [
-        ...prev,
-        { text: "Thank you! Your appointment request has been received. We will contact you at your email to confirm the details.", isBot: true }
-      ]);
-      setAppointmentState('confirm');
-      // Optionally, send appointmentData to backend here
-      setTimeout(() => {
-        setAppointmentState(null);
-        setAppointmentData({});
-      }, 2000);
+      setAppointmentData(data => {
+        const newData = { ...data, time: userInput };
+        setMessages(prev => [
+          ...prev,
+          { text: "Thank you! Your appointment request has been received. Here is a summary:", isBot: true },
+          { text: `Name: ${newData.name}\nEmail: ${newData.email}\nDate: ${newData.date}\nTime: ${newData.time}`, isBot: true },
+          { text: "We will contact you at your email to confirm the details.", isBot: true }
+        ]);
+        setAppointmentState('confirm');
+        // Optionally, send appointmentData to backend here
+        setTimeout(() => {
+          setAppointmentState(null);
+          setAppointmentData({});
+        }, 3000);
+        return newData;
+      });
       return;
     }
   }
