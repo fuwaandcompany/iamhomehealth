@@ -131,7 +131,6 @@ export default function Chatbot() {
   const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [input, setInput] = useState('');
   const [appointmentState, setAppointmentState] = useState<AppointmentState>(null);
-  const [appointmentData, setAppointmentData] = useState<{ name?: string; email?: string; date?: string; time?: string }>({});
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -216,7 +215,6 @@ export default function Chatbot() {
       }
     }
     if (appointmentState === 'collect_name') {
-      setAppointmentData(data => ({ ...data, name: sanitizedInput }));
       setMessages(prev => [
         ...prev,
         { text: "Thanks! What's your email address?", isBot: true }
@@ -225,7 +223,6 @@ export default function Chatbot() {
       return;
     }
     if (appointmentState === 'collect_email') {
-      setAppointmentData(data => ({ ...data, email: sanitizedInput }));
       setMessages(prev => [
         ...prev,
         { text: "What date would you like to schedule your appointment for? (e.g., 2024-06-15)", isBot: true }
@@ -234,7 +231,6 @@ export default function Chatbot() {
       return;
     }
     if (appointmentState === 'collect_date') {
-      setAppointmentData(data => ({ ...data, date: sanitizedInput }));
       setMessages(prev => [
         ...prev,
         { text: "What time works best for you? (e.g., 2:00 PM)", isBot: true }
@@ -243,21 +239,14 @@ export default function Chatbot() {
       return;
     }
     if (appointmentState === 'collect_time') {
-      setAppointmentData(data => {
-        const newData = { ...data, time: sanitizedInput };
-        setMessages(prev => [
-          ...prev,
-          { text: "Thank you! Your appointment request has been received. Here is a summary:", isBot: true },
-          { text: `Name: ${newData.name}\nEmail: ${newData.email}\nDate: ${newData.date}\nTime: ${newData.time}`, isBot: true },
-          { text: "We will contact you at your email to confirm the details.", isBot: true }
-        ]);
-        setAppointmentState('confirm');
-        setTimeout(() => {
-          setAppointmentState(null);
-          setAppointmentData({});
-        }, 3000);
-        return newData;
-      });
+      setMessages(prev => [
+        ...prev,
+        { text: "Thank you! Your appointment request has been received. We will contact you at your email to confirm the details.", isBot: true }
+      ]);
+      setAppointmentState('confirm');
+      setTimeout(() => {
+        setAppointmentState(null);
+      }, 3000);
       return;
     }
   }
