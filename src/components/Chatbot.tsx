@@ -7,6 +7,14 @@ interface Message {
   isBot: boolean;
 }
 
+type AppointmentState =
+  | null
+  | 'collect_name'
+  | 'collect_email'
+  | 'collect_date'
+  | 'collect_time'
+  | 'confirm';
+
 const initialMessages: Message[] = [
   {
     text: "Hello! I'm your IAM Home Health Care Services assistant. How can I help you today?",
@@ -101,6 +109,8 @@ export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [input, setInput] = useState('');
+  const [appointmentState, setAppointmentState] = useState<AppointmentState>(null);
+  const [appointmentData, setAppointmentData] = useState<{ name?: string; email?: string; date?: string; time?: string }>({});
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -118,25 +128,86 @@ export default function Chatbot() {
     // Add user message
     const userMessage: Message = { text: input, isBot: false };
     setMessages(prev => [...prev, userMessage]);
-    setInput('');
 
-    // Simulate bot response
+    // Appointment scheduling flow
+    if (appointmentState) {
+      handleAppointmentFlow(input);
+      setInput('');
+      return;
+    }
+
+    // Check for appointment intent
+    if (/schedule|appointment|book|consult/i.test(input)) {
+      setTimeout(() => {
+        setMessages(prev => [
+          ...prev,
+          { text: "Great! Let's schedule your appointment. What's your full name?", isBot: true }
+        ]);
+        setAppointmentState('collect_name');
+      }, 700);
+      setInput('');
+      return;
+    }
+
+    // Simulate bot response for common questions
     setTimeout(() => {
       const question = input.toLowerCase();
       let response = "I'm sorry, I don't have information about that. Please contact us directly for more details.";
-
-      // Check for common questions
       for (const q of commonQuestions) {
         if (question.includes(q.question.toLowerCase())) {
           response = q.answer;
           break;
         }
       }
-
       const botMessage: Message = { text: response, isBot: true };
       setMessages(prev => [...prev, botMessage]);
     }, 1000);
+    setInput('');
   };
+
+  function handleAppointmentFlow(userInput: string) {
+    if (appointmentState === 'collect_name') {
+      setAppointmentData(data => ({ ...data, name: userInput }));
+      setMessages(prev => [
+        ...prev,
+        { text: "Thanks! What's your email address?", isBot: true }
+      ]);
+      setAppointmentState('collect_email');
+      return;
+    }
+    if (appointmentState === 'collect_email') {
+      setAppointmentData(data => ({ ...data, email: userInput }));
+      setMessages(prev => [
+        ...prev,
+        { text: "What date would you like to schedule your appointment for? (e.g., 2024-06-15)", isBot: true }
+      ]);
+      setAppointmentState('collect_date');
+      return;
+    }
+    if (appointmentState === 'collect_date') {
+      setAppointmentData(data => ({ ...data, date: userInput }));
+      setMessages(prev => [
+        ...prev,
+        { text: "What time works best for you? (e.g., 2:00 PM)", isBot: true }
+      ]);
+      setAppointmentState('collect_time');
+      return;
+    }
+    if (appointmentState === 'collect_time') {
+      setAppointmentData(data => ({ ...data, time: userInput }));
+      setMessages(prev => [
+        ...prev,
+        { text: "Thank you! Your appointment request has been received. We will contact you at your email to confirm the details.", isBot: true }
+      ]);
+      setAppointmentState('confirm');
+      // Optionally, send appointmentData to backend here
+      setTimeout(() => {
+        setAppointmentState(null);
+        setAppointmentData({});
+      }, 2000);
+      return;
+    }
+  }
 
   return (
     <div className="fixed bottom-4 right-4 z-50">
@@ -211,12 +282,14 @@ export default function Chatbot() {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Type your message..."
+                placeholder={appointmentState ? "Type your answer..." : "Type your message..."}
                 className="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                disabled={appointmentState === 'confirm'}
               />
               <button
                 type="submit"
                 className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                disabled={appointmentState === 'confirm'}
               >
                 Send
               </button>

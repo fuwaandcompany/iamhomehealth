@@ -50,6 +50,39 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
             Contact Us
           </h2>
+          <div className="mb-8 text-center space-y-2">
+            <div>
+              <span className="font-semibold">Address: </span>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=14201+Laurel+Park+Drive+%23118,+Laurel,+Maryland+20707"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline"
+              >
+                14201 Laurel Park Drive #118, Laurel, Maryland 20707
+              </a>
+            </div>
+            <div>
+              <span className="font-semibold">Phone: </span>
+              <a href="tel:3015021384" className="text-blue-600 hover:underline">(301) 502-1384</a>
+            </div>
+            <div>
+              <span className="font-semibold">Business Hours: </span>
+              <span>9:00AM to 5:00PM, Monday to Friday</span>
+            </div>
+          </div>
+          <div className="mb-8 rounded-lg overflow-hidden shadow-lg">
+            <iframe
+              title="Google Map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.013964295679!2d-76.8729646846496!3d39.08528297954316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7d1e2e2e2e2e2%3A0x0!2s14201%20Laurel%20Park%20Dr%20%23118%2C%20Laurel%2C%20MD%2020707!5e0!3m2!1sen!2sus!4v1718040000000!5m2!1sen!2sus"
+              width="100%"
+              height="300"
+              style={{ border: 0 }}
+              allowFullScreen={true}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
           <form
             name="contact"
             method="POST"
