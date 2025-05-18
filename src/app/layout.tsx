@@ -5,11 +5,11 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "IAM Home Health Services, LLC",
+  title: "IAM Home Health Care Services LLC",
   description: "Professional home health care services providing compassionate and personalized care for your loved ones.",
   keywords: "home health, healthcare, nursing, elderly care, home care services",
   openGraph: {
-    title: "IAM Home Health Services, LLC",
+    title: "IAM Home Health Care Services LLC",
     description: "Professional home health care services providing compassionate and personalized care for your loved ones.",
     type: "website",
   },

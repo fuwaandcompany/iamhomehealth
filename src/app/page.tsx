@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Chatbot from "@/components/Chatbot";
 
 export default function Home() {
   return (
@@ -8,7 +9,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 text-center px-4">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            IAM Home Health Services, LLC
+            IAM Home Health Care Services LLC
           </h1>
           <p className="text-xl md:text-2xl mb-8">
             Compassionate Care in the Comfort of Your Home
@@ -92,6 +93,9 @@ export default function Home() {
           </form>
         </div>
       </section>
+
+      {/* Chatbot */}
+      <Chatbot />
     </div>
   );
 }
@@ -126,5 +130,15 @@ const services = [
     icon: "❤️",
     title: "Personal Care",
     description: "Assistance with daily activities and personal hygiene.",
+  },
+  {
+    icon: "💓",
+    title: "Echocardiogram",
+    description: "On-site heart ultrasound services for comprehensive cardiac assessment.",
+  },
+  {
+    icon: "🚑",
+    title: "Non-medical Emergency Transportation",
+    description: "Reliable transportation services for medical appointments and emergencies.",
   },
 ]
