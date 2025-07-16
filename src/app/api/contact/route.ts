@@ -93,10 +93,15 @@ export async function POST(request: Request) {
     // Create email template
     const emailTemplate = createEmailTemplate(contactType, name, email, message);
 
+    // Parse multiple email recipients
+    const recipients = process.env.CONTACT_EMAIL 
+      ? process.env.CONTACT_EMAIL.split(',').map(email => email.trim())
+      : [process.env.GMAIL_USER];
+
     // Send email using Gmail SMTP
     await transporter.sendMail({
       from: `"IAM Home Health Care Services" <${process.env.GMAIL_USER}>`,
-      to: process.env.CONTACT_EMAIL || process.env.GMAIL_USER,
+      to: recipients,
       replyTo: email,
       subject: emailTemplate.subject,
       text: emailTemplate.textBody,
@@ -118,6 +123,15 @@ export async function POST(request: Request) {
 
   } catch (error) {
     console.error('Error processing form submission:', error);
+    console.error('Error details:', {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : 'No stack trace',
+      env: {
+        hasGmailUser: !!process.env.GMAIL_USER,
+        hasGmailPassword: !!process.env.GMAIL_APP_PASSWORD,
+        hasContactEmail: !!process.env.CONTACT_EMAIL
+      }
+    });
     
     // Handle specific Gmail SMTP errors
     if (error instanceof Error) {
