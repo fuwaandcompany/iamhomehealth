@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Chatbot from "@/components/Chatbot";
+import ContactForm from "@/components/ContactForm";
 
 export default function Home() {
   return (
@@ -83,64 +84,7 @@ export default function Home() {
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
-          <form
-            name="contact"
-            method="POST"
-            action="/api/contact"
-            className="space-y-6"
-          >
-            <input type="hidden" name="form-name" value="contact" />
-            <div>
-              <label className="block font-semibold mb-2">I am a:</label>
-              <div className="flex flex-wrap gap-4">
-                <label className="flex items-center gap-2">
-                  <input type="radio" name="contactType" value="Patient" required className="accent-blue-600" /> Patient
-                </label>
-                <label className="flex items-center gap-2">
-                  <input type="radio" name="contactType" value="Healthcare provider" className="accent-blue-600" /> Healthcare provider
-                </label>
-                <label className="flex items-center gap-2">
-                  <input type="radio" name="contactType" value="Vendor" className="accent-blue-600" /> Vendor
-                </label>
-                <label className="flex items-center gap-2">
-                  <input type="radio" name="contactType" value="Other" className="accent-blue-600" /> Other
-                </label>
-              </div>
-            </div>
-            <div>
-              <input
-                type="text"
-                name="name"
-                placeholder="Your Name"
-                required
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
-            <div>
-              <input
-                type="email"
-                name="email"
-                placeholder="Your Email"
-                required
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
-            <div>
-              <textarea
-                name="message"
-                placeholder="Your Message"
-                rows={4}
-                required
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-            >
-              Send Message
-            </button>
-          </form>
+          <ContactForm />
         </div>
       </section>
 
