@@ -95,8 +95,8 @@ export async function POST(request: Request) {
 
     // Parse multiple email recipients
     const recipients = process.env.CONTACT_EMAIL 
-      ? process.env.CONTACT_EMAIL.split(',').map(email => email.trim())
-      : [process.env.GMAIL_USER];
+      ? process.env.CONTACT_EMAIL.split(',').map(email => email.trim()).filter(email => email.length > 0)
+      : process.env.GMAIL_USER ? [process.env.GMAIL_USER] : [];
 
     // Send email using Gmail SMTP
     await transporter.sendMail({
