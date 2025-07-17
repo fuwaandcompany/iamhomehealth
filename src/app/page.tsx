@@ -26,14 +26,23 @@ export default function Home() {
 
       {/* Hero Section */}
       <header id="hero" className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background GIF */}
+        {/* Background Video */}
         <div className="absolute inset-0">
-          <img
-            src="/images/hero-bg.gif"
-            alt="Healthcare professionals providing compassionate care"
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-full object-cover"
             style={{ filter: 'brightness(0.4)' }}
-          />
+          >
+            <source src="/images/hero-bg.mp4" type="video/mp4" />
+            <img
+              src="/images/hero-bg-fallback.jpg"
+              alt="Healthcare professionals providing compassionate care"
+              className="w-full h-full object-cover"
+            />
+          </video>
         </div>
         
         {/* Overlay for better text readability */}
