@@ -210,14 +210,14 @@ export default function ServiceAreaSection() {
             <div className="text-6xl mb-4">🗺️</div>
             <h4 className="text-xl font-bold text-gray-900 mb-2">Maryland Service Area</h4>
             <p className="text-gray-600 mb-4">
-              Covering Prince George's County and Montgomery County
+              Covering Prince George&apos;s County and Montgomery County
             </p>
             
             {/* Service Area Highlights */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-md mx-auto">
               <div className="bg-white p-4 rounded-lg shadow-sm">
                 <div className="font-bold text-blue-600">Primary Coverage</div>
-                <div className="text-sm text-gray-600">Prince George's County</div>
+                <div className="text-sm text-gray-600">Prince George&apos;s County</div>
                 <div className="text-xs text-gray-500">1-2 hour response</div>
               </div>
               <div className="bg-white p-4 rounded-lg shadow-sm">
