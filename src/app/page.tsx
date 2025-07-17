@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Chatbot from "@/components/Chatbot";
 import ContactForm from "@/components/ContactForm";
 import Navigation from "@/components/Navigation";
@@ -37,10 +38,11 @@ export default function Home() {
             style={{ filter: 'brightness(0.4)' }}
           >
             <source src="/images/hero-bg.mp4" type="video/mp4" />
-            <img
+            <Image
               src="/images/hero-bg-fallback.jpg"
               alt="Healthcare professionals providing compassionate care"
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
             />
           </video>
         </div>
@@ -105,10 +107,12 @@ export default function Home() {
               className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
             >
               <div className="mb-6 flex justify-center">
-                <img 
+                <Image 
                   src={service.image} 
                   alt={service.title}
-                  className="w-20 h-20 object-cover rounded-lg"
+                  width={80}
+                  height={80}
+                  className="object-cover rounded-lg"
                 />
               </div>
               <h3 className="text-xl font-bold mb-4 text-center text-gray-900">{service.title}</h3>

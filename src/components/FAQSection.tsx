@@ -228,8 +228,8 @@ export default function FAQSection() {
           Still Have Questions?
         </h3>
         <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-          Our team is here to help! If you don't see your question answered above, 
-          please don't hesitate to contact us. We're happy to discuss your specific 
+          Our team is here to help! If you don&apos;t see your question answered above, 
+          please don&apos;t hesitate to contact us. We&apos;re happy to discuss your specific 
           needs and how we can help you or your loved one.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

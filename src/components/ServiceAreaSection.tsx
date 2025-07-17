@@ -265,7 +265,7 @@ export default function ServiceAreaSection() {
           Not Sure if We Serve Your Area?
         </h3>
         <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-          We're continuously expanding our service area. Even if your location isn't listed above, 
+          We&apos;re continuously expanding our service area. Even if your location isn&apos;t listed above, 
           contact us to check current availability and upcoming coverage expansions.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

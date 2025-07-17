@@ -146,7 +146,7 @@ export default function InsuranceProvidersSection() {
             </div>
             <h4 className="font-bold text-lg mb-2">Free Benefits Verification</h4>
             <p className="text-blue-100 text-sm">
-              We verify your coverage and benefits before starting services, so you know exactly what's covered.
+              We verify your coverage and benefits before starting services, so you know exactly what&apos;s covered.
             </p>
           </div>
 

@@ -101,7 +101,7 @@ export default function TestimonialsSection() {
           </div>
           
           <blockquote className="text-lg md:text-xl text-gray-700 leading-relaxed mb-8 italic">
-            "{testimonials[currentTestimonial].testimonial}"
+            &ldquo;{testimonials[currentTestimonial].testimonial}&rdquo;
           </blockquote>
           
           <div className="flex flex-col items-center">
@@ -156,7 +156,7 @@ export default function TestimonialsSection() {
             </div>
             
             <p className="text-gray-700 text-sm leading-relaxed mb-4 line-clamp-4">
-              "{testimonial.testimonial}"
+              &ldquo;{testimonial.testimonial}&rdquo;
             </p>
             
             <div className="border-t pt-4">
