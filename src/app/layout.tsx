@@ -5,12 +5,12 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "IAM Home Health Care Services LLC",
-  description: "Professional home health care services providing compassionate and personalized care for your loved ones.",
-  keywords: "home health, healthcare, nursing, elderly care, home care services",
+  title: "IAM Home Health Care Services LLC - Licensed Home Health Care (RSA-02989)",
+  description: "Licensed home health care services (RSA-02989) providing compassionate and personalized care for your loved ones in Maryland.",
+  keywords: "home health, healthcare, nursing, elderly care, home care services, RSA license, Maryland home health",
   openGraph: {
-    title: "IAM Home Health Care Services LLC",
-    description: "Professional home health care services providing compassionate and personalized care for your loved ones.",
+    title: "IAM Home Health Care Services LLC - Licensed Home Health Care",
+    description: "Licensed home health care services (RSA-02989) providing compassionate and personalized care for your loved ones in Maryland.",
     type: "website",
   },
 };
