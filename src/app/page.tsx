@@ -6,6 +6,9 @@ import Navigation from "@/components/Navigation";
 import Breadcrumb from "@/components/Breadcrumb";
 import Section from "@/components/Section";
 import Footer from "@/components/Footer";
+import InsuranceProvidersSection from "@/components/InsuranceProvidersSection";
+import ServiceAreaSection from "@/components/ServiceAreaSection";
+import FAQSection from "@/components/FAQSection";
 
 export default function Home() {
   const scrollToSection = (href: string) => {
@@ -22,14 +25,26 @@ export default function Home() {
       <Navigation />
 
       {/* Hero Section */}
-      <header id="hero" className="relative h-screen flex items-center justify-center bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
+      <header id="hero" className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Background GIF */}
+        <div className="absolute inset-0">
+          <img
+            src="/images/hero-bg.gif"
+            alt="Healthcare professionals providing compassionate care"
+            className="w-full h-full object-cover"
+            style={{ filter: 'brightness(0.4)' }}
+          />
+        </div>
+        
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/70 to-blue-800/50" />
+        
+        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto text-white">
           <div className="space-y-6">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight drop-shadow-lg">
               IAM Home Health Care Services LLC
             </h1>
-            <p className="text-xl md:text-2xl lg:text-3xl font-light max-w-4xl mx-auto">
+            <p className="text-xl md:text-2xl lg:text-3xl font-light max-w-4xl mx-auto drop-shadow-md">
               Compassionate Care in the Comfort of Your Home
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
@@ -41,7 +56,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => scrollToSection('#services')}
-                className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all"
+                className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all backdrop-blur-sm"
               >
                 Explore Our Services
               </button>
@@ -53,7 +68,7 @@ export default function Home() {
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
           <button
             onClick={() => scrollToSection('#services')}
-            className="text-white/80 hover:text-white transition-colors animate-bounce"
+            className="text-white/80 hover:text-white transition-colors animate-bounce drop-shadow-lg"
             aria-label="Scroll to services"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -80,7 +95,13 @@ export default function Home() {
               key={index}
               className="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
             >
-              <div className="text-blue-600 text-5xl mb-6 flex justify-center">{service.icon}</div>
+              <div className="mb-6 flex justify-center">
+                <img 
+                  src={service.image} 
+                  alt={service.title}
+                  className="w-20 h-20 object-cover rounded-lg"
+                />
+              </div>
               <h3 className="text-xl font-bold mb-4 text-center text-gray-900">{service.title}</h3>
               <p className="text-gray-600 text-center leading-relaxed">{service.description}</p>
             </div>
@@ -177,6 +198,15 @@ export default function Home() {
         </div>
       </Section>
 
+      {/* Insurance Providers Section */}
+      <InsuranceProvidersSection />
+
+      {/* Service Area Section */}
+      <ServiceAreaSection />
+
+      {/* FAQ Section */}
+      <FAQSection />
+
       {/* Contact Section */}
       <Section
         id="contact"
@@ -272,42 +302,42 @@ export default function Home() {
 
 const services = [
   {
-    icon: "🏥",
+    image: "/images/services/skilled-nursing.png",
     title: "Skilled Nursing Care",
     description: "Professional nursing services provided by licensed nurses in the comfort of your home.",
   },
   {
-    icon: "💊",
+    image: "/images/services/medication-management.png",
     title: "Medication Management",
     description: "Expert assistance with medication administration and management.",
   },
   {
-    icon: "👨‍⚕️",
+    image: "/images/services/physical-therapy.png",
     title: "Physical Therapy",
     description: "Personalized physical therapy programs to improve mobility and strength.",
   },
   {
-    icon: "👩‍⚕️",
+    image: "/images/services/occupational-therapy.png",
     title: "Occupational Therapy",
     description: "Help with daily living activities and adaptive equipment training.",
   },
   {
-    icon: "💬",
+    image: "/images/services/speech-therapy.png",
     title: "Speech Therapy",
     description: "Specialized speech and language therapy services.",
   },
   {
-    icon: "❤️",
+    image: "/images/services/personal-care.png",
     title: "Personal Care",
     description: "Assistance with daily activities and personal hygiene.",
   },
   {
-    icon: "💓",
+    image: "/images/services/echocardiogram.png",
     title: "Echocardiogram",
     description: "On-site heart ultrasound services for comprehensive cardiac assessment.",
   },
   {
-    icon: "🚑",
+    image: "/images/services/emergency-transport.png",
     title: "Non-medical Emergency Transportation",
     description: "Reliable transportation services for medical appointments and emergencies.",
   },

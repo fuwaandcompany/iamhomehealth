@@ -25,7 +25,7 @@ export default function Navigation({ currentSection }: NavigationProps) {
   // Handle section detection
   useEffect(() => {
     const handleSectionDetection = () => {
-      const sections = ['home', 'services', 'about', 'contact'];
+      const sections = ['home', 'services', 'about', 'insurance', 'service-area', 'faq', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -48,6 +48,9 @@ export default function Navigation({ currentSection }: NavigationProps) {
     { id: 'home', label: 'Home', href: '#hero' },
     { id: 'services', label: 'Services', href: '#services' },
     { id: 'about', label: 'About Us', href: '#about' },
+    { id: 'insurance', label: 'Insurance', href: '#insurance' },
+    { id: 'service-area', label: 'Service Area', href: '#service-area' },
+    { id: 'faq', label: 'FAQ', href: '#faq' },
     { id: 'contact', label: 'Contact', href: '#contact' },
   ];
 
