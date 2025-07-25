@@ -10,13 +10,6 @@ interface InsuranceProvider {
 
 const insuranceProviders: InsuranceProvider[] = [
   {
-    name: "Medicare",
-    logo: "🏥",
-    description: "Federal health insurance program for seniors and disabled individuals",
-    coverage: ["Skilled Nursing", "Physical Therapy", "Occupational Therapy", "Speech Therapy", "Medical Equipment"],
-    website: "medicare.gov"
-  },
-  {
     name: "Medicaid",
     logo: "🏛️",
     description: "State and federal program providing healthcare coverage for eligible low-income individuals",
@@ -41,14 +34,14 @@ const insuranceProviders: InsuranceProvider[] = [
     name: "UnitedHealthcare",
     logo: "⚕️",
     description: "One of the largest health insurance providers in the United States",
-    coverage: ["Medicare Advantage", "Home Health Services", "Care Coordination"],
+    coverage: ["Health Insurance Plans", "Home Health Services", "Care Coordination"],
     website: "uhc.com"
   },
   {
     name: "Humana",
     logo: "❤️",
     description: "Health insurance focused on wellness and preventive care",
-    coverage: ["Medicare Plans", "Home Health", "Wellness Programs", "Chronic Care"],
+    coverage: ["Health Insurance Plans", "Home Health", "Wellness Programs", "Chronic Care"],
     website: "humana.com"
   },
   {
@@ -205,11 +198,11 @@ export default function InsuranceProvidersSection() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="tel:(301)502-1384"
+            href="tel:(301)535-1344"
             className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
           >
             <span className="mr-2">📞</span>
-            Call (301) 502-1384
+            Call (301) 535-1344
           </a>
           <a
             href="#contact"

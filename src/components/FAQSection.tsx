@@ -53,12 +53,7 @@ const faqs: FAQ[] = [
   {
     category: "Insurance & Payment",
     question: "Do you accept insurance?",
-    answer: "Yes, we work with most major insurance providers including Medicare, Medicaid, Blue Cross Blue Shield, Aetna, UnitedHealthcare, Humana, Cigna, and many others. We provide free insurance verification and handle billing directly."
-  },
-  {
-    category: "Insurance & Payment",
-    question: "What does Medicare cover for home health services?",
-    answer: "Medicare typically covers skilled nursing, physical therapy, occupational therapy, and speech therapy when medically necessary and ordered by your physician. Coverage includes services, equipment, and supplies. Personal care services are generally not covered by Medicare."
+    answer: "Yes, we work with most major insurance providers including Medicaid, Blue Cross Blue Shield, Aetna, UnitedHealthcare, Humana, Cigna, and many others. We provide free insurance verification and handle billing directly."
   },
   {
     category: "Insurance & Payment",
@@ -234,11 +229,11 @@ export default function FAQSection() {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="tel:(301)502-1384"
+            href="tel:(301)535-1344"
             className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
           >
             <span className="mr-2">📞</span>
-            Call (301) 502-1384
+            Call (301) 535-1344
           </a>
           <a
             href="#contact"

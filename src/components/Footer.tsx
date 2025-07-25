@@ -22,7 +22,7 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex space-x-4">
                 <a
-                  href="tel:3015021384"
+                  href="tel:3015351344"
                   className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   Call Now
@@ -31,6 +31,9 @@ export default function Footer() {
               <div className="text-sm text-gray-400">
                 <p className="font-medium text-blue-400">Licensed & Certified</p>
                 <p>RSA License: RSA-02989</p>
+                <p>VSBE Certification: #VB25-083959</p>
+                <p>MD Veteran Verification: #MDVA2025-224</p>
+                <p>SBR Certification: SB25-083958</p>
               </div>
             </div>
           </div>
@@ -105,8 +108,8 @@ export default function Footer() {
                 <svg className="w-4 h-4 text-blue-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                 </svg>
-                <a href="tel:3015021384" className="text-gray-400 hover:text-white">
-                  (301) 502-1384
+                <a href="tel:3015351344" className="text-gray-400 hover:text-white">
+                  (301) 535-1344
                 </a>
               </div>
               

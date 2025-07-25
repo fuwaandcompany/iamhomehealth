@@ -52,14 +52,14 @@ const createAppointmentEmailTemplate = (appointmentData: AppointmentData) => {
             <ul>
               <li>Our team will call you at ${appointmentData.phone} within 2 hours</li>
               <li>We'll confirm your appointment details and answer any questions</li>
-              <li>If you need immediate assistance, call us at (301) 502-1384</li>
+              <li>If you need immediate assistance, call us at (301) 535-1344</li>
               <li>Please have your insurance information and physician orders ready</li>
             </ul>
           </div>
           
           <div style="background: #e8f4f8; padding: 15px; border-radius: 8px; margin: 20px 0;">
             <h4 style="margin-top: 0; color: #2c5aa0;">Contact Information</h4>
-            <p style="margin: 5px 0;"><strong>Phone:</strong> (301) 502-1384</p>
+            <p style="margin: 5px 0;"><strong>Phone:</strong> (301) 535-1344</p>
             <p style="margin: 5px 0;"><strong>Address:</strong> 14201 Laurel Park Drive #118, Laurel, Maryland 20707</p>
             <p style="margin: 5px 0;"><strong>Business Hours:</strong> 9:00AM to 5:00PM, Monday to Friday</p>
             <p style="margin: 5px 0;"><strong>Emergency Line:</strong> Available 24/7</p>
@@ -68,7 +68,7 @@ const createAppointmentEmailTemplate = (appointmentData: AppointmentData) => {
           <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e9ecef; color: #666; font-size: 12px;">
             <p>This appointment request was submitted through our website chatbot.</p>
             <p>Time: ${new Date().toLocaleString()}</p>
-            <p>If you did not request this appointment, please call us immediately at (301) 502-1384</p>
+            <p>If you did not request this appointment, please call us immediately at (301) 535-1344</p>
           </div>
         </div>
       </body>
@@ -94,11 +94,11 @@ const createAppointmentEmailTemplate = (appointmentData: AppointmentData) => {
     Next Steps:
     - Our team will call you at ${appointmentData.phone} within 2 hours
     - We'll confirm your appointment details and answer any questions
-    - If you need immediate assistance, call us at (301) 502-1384
+    - If you need immediate assistance, call us at (301) 535-1344
     - Please have your insurance information and physician orders ready
     
     Contact Information:
-    Phone: (301) 502-1384
+    Phone: (301) 535-1344
     Address: 14201 Laurel Park Drive #118, Laurel, Maryland 20707
     Business Hours: 9:00AM to 5:00PM, Monday to Friday
     Emergency Line: Available 24/7
@@ -222,7 +222,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       { 
         success: false,
-        message: 'There was an error processing your appointment request. Please call us directly at (301) 502-1384.'
+        message: 'There was an error processing your appointment request. Please call us directly at (301) 535-1344.'
       },
       { status: 500 }
     );

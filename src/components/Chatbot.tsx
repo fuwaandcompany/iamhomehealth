@@ -101,7 +101,7 @@ const serviceDetails = {
 
 // Insurance providers and verification guidance
 const insuranceProviders = [
-  "Medicare", "Medicaid", "Aetna", "Blue Cross Blue Shield", "Cigna", 
+  "Medicaid", "Aetna", "Blue Cross Blue Shield", "Cigna", 
   "Humana", "UnitedHealthcare", "Kaiser Permanente", "Anthem", "Other"
 ];
 
@@ -180,7 +180,7 @@ const commonQuestions = [
   },
   {
     question: "What payment methods do you accept?",
-    answer: "We accept various payment methods including insurance, Medicare, Medicaid (where applicable), private pay, and long-term care insurance. We can help you understand your coverage options."
+    answer: "We accept various payment methods including insurance, Medicaid (where applicable), private pay, and long-term care insurance. We can help you understand your coverage options."
   },
   {
     question: "How do you match caregivers with patients?",
@@ -245,7 +245,7 @@ export default function Chatbot() {
       if (pattern.test(sanitizedInput)) {
         setMessages(prev => [
           ...prev,
-          { text: "For your privacy and security, please do not share sensitive information such as SSN, insurance numbers, or medical history here. If you need to discuss sensitive matters, please call us directly at (301) 502-1384.", isBot: true }
+          { text: "For your privacy and security, please do not share sensitive information such as SSN, insurance numbers, or medical history here. If you need to discuss sensitive matters, please call us directly at (301) 535-1344.", isBot: true }
         ]);
         setInput('');
         return;
@@ -317,10 +317,10 @@ export default function Chatbot() {
             ]
           }
         ]);
-      } else if (option.startsWith("Call now:") || option.includes("(301) 502-1384")) {
+      } else if (option.startsWith("Call now:") || option.includes("(301) 535-1344")) {
         setMessages(prev => [
           ...prev,
-          { text: "Please call us at (301) 502-1384. Our staff is ready to assist you immediately.", isBot: true }
+          { text: "Please call us at (301) 535-1344. Our staff is ready to assist you immediately.", isBot: true }
         ]);
         setConversationState(null);
       } else {
@@ -399,7 +399,7 @@ export default function Chatbot() {
       if (pattern.test(sanitizedInput)) {
         setMessages(prev => [
           ...prev,
-          { text: "For your privacy and security, please do not share sensitive information such as SSN, insurance numbers, or medical history here. If you need to discuss sensitive matters, please call us directly at (301) 502-1384.", isBot: true }
+          { text: "For your privacy and security, please do not share sensitive information such as SSN, insurance numbers, or medical history here. If you need to discuss sensitive matters, please call us directly at (301) 535-1344.", isBot: true }
         ]);
         return;
       }
@@ -521,7 +521,7 @@ export default function Chatbot() {
       setMessages(prev => [
         ...prev,
         { 
-          text: "I'd be happy to help verify your benefits! Please call us at (301) 502-1384 and have your insurance card ready. Our staff can verify your coverage and explain your benefits in detail.\n\nWould you like to schedule an appointment in the meantime?", 
+          text: "I'd be happy to help verify your benefits! Please call us at (301) 535-1344 and have your insurance card ready. Our staff can verify your coverage and explain your benefits in detail.\n\nWould you like to schedule an appointment in the meantime?", 
           isBot: true,
           options: ["Schedule an appointment", "Back to main menu"]
         }
@@ -539,9 +539,6 @@ export default function Chatbot() {
       
       let guidance = "";
       switch (provider) {
-        case "Medicare":
-          guidance = "Medicare typically covers our skilled nursing, physical therapy, occupational therapy, and speech therapy services when medically necessary and ordered by your physician. You'll need:\n• Medicare card\n• Physician's order\n• Recent hospital discharge papers (if applicable)\n\nMedicare generally does NOT cover personal care services.";
-          break;
         case "Medicaid":
           guidance = "Medicaid coverage varies by state but often includes our medical services. You'll need:\n• Medicaid card\n• Physician's order\n• Prior authorization may be required\n\nPersonal care services may be covered under some Medicaid waiver programs.";
           break;
@@ -574,7 +571,7 @@ export default function Chatbot() {
     if (userInput.includes("911") || userInput.includes("Life-threatening")) {
       setMessages(prev => [
         ...prev,
-        { text: "Please call 911 immediately for life-threatening emergencies. If you need additional support after emergency services, please call us at (301) 502-1384.", isBot: true }
+        { text: "Please call 911 immediately for life-threatening emergencies. If you need additional support after emergency services, please call us at (301) 535-1344.", isBot: true }
       ]);
       setConversationState(null);
       return;
@@ -582,13 +579,13 @@ export default function Chatbot() {
 
     let response = "";
     if (userInput.includes("Medication")) {
-      response = "For medication emergencies:\n• Call our 24/7 nursing line: (301) 502-1384\n• Have your medication list ready\n• If experiencing severe reactions, call 911\n• Contact your physician or pharmacy if needed\n\nShould I connect you with our nursing staff immediately?";
+      response = "For medication emergencies:\n• Call our 24/7 nursing line: (301) 535-1344\n• Have your medication list ready\n• If experiencing severe reactions, call 911\n• Contact your physician or pharmacy if needed\n\nShould I connect you with our nursing staff immediately?";
     } else if (userInput.includes("Equipment")) {
-      response = "For equipment issues:\n• Call our equipment hotline: (301) 502-1384\n• Have your equipment model/serial number ready\n• We provide 24/7 equipment support\n• Emergency replacements available\n\nWould you like me to connect you with our equipment team?";
+      response = "For equipment issues:\n• Call our equipment hotline: (301) 535-1344\n• Have your equipment model/serial number ready\n• We provide 24/7 equipment support\n• Emergency replacements available\n\nWould you like me to connect you with our equipment team?";
     } else if (userInput.includes("Caregiver")) {
-      response = "For caregiver no-shows or issues:\n• Call our staffing coordinator: (301) 502-1384\n• We'll send a replacement caregiver immediately\n• Document the incident for quality improvement\n\nShall I connect you with our staffing team right away?";
+      response = "For caregiver no-shows or issues:\n• Call our staffing coordinator: (301) 535-1344\n• We'll send a replacement caregiver immediately\n• Document the incident for quality improvement\n\nShall I connect you with our staffing team right away?";
     } else {
-      response = "For urgent concerns:\n• Call our main line: (301) 502-1384\n• Press 1 for nursing emergencies\n• Press 2 for equipment issues\n• Press 3 for staffing problems\n\nOur staff is available 24/7 for urgent situations.";
+      response = "For urgent concerns:\n• Call our main line: (301) 535-1344\n• Press 1 for nursing emergencies\n• Press 2 for equipment issues\n• Press 3 for staffing problems\n\nOur staff is available 24/7 for urgent situations.";
     }
 
     setMessages(prev => [
@@ -596,7 +593,7 @@ export default function Chatbot() {
       { 
         text: response, 
         isBot: true,
-        options: ["Call now: (301) 502-1384", "Back to main menu"]
+        options: ["Call now: (301) 535-1344", "Back to main menu"]
       }
     ]);
     setConversationState(null);
@@ -673,7 +670,7 @@ export default function Chatbot() {
       console.error('Error submitting appointment:', error);
       setMessages(prev => [
         ...prev,
-        { text: "There was an issue submitting your appointment. Please call us directly at (301) 502-1384 to schedule. We apologize for the inconvenience.", isBot: true }
+        { text: "There was an issue submitting your appointment. Please call us directly at (301) 535-1344 to schedule. We apologize for the inconvenience.", isBot: true }
       ]);
     }
 
@@ -683,7 +680,7 @@ export default function Chatbot() {
 
   const handleGeneralQuestions = (userInput: string) => {
     const question = userInput.toLowerCase();
-    let response = "I'm here to help! For specific questions, please contact us at (301) 502-1384 or use our contact form. You can also ask me about:\n• Our services\n• Scheduling appointments\n• Insurance verification\n• Emergency assistance";
+    let response = "I'm here to help! For specific questions, please contact us at (301) 535-1344 or use our contact form. You can also ask me about:\n• Our services\n• Scheduling appointments\n• Insurance verification\n• Emergency assistance";
     
     for (const q of commonQuestions) {
       if (question.includes(q.question.toLowerCase())) {
