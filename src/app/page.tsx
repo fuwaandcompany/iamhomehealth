@@ -201,9 +201,22 @@ export default function Home() {
                   <span className="text-gray-700 font-medium">RSA License</span>
                   <span className="text-blue-600 font-bold text-lg">RSA-02989</span>
                 </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-700 font-medium">VSBE Certification</span>
+                  <span className="text-blue-600 font-bold text-lg">#VB25-083959</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-700 font-medium">MD Veteran Verification</span>
+                  <span className="text-blue-600 font-bold text-lg">#MDVA2025-224</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-700 font-medium">SBR Certification</span>
+                  <span className="text-blue-600 font-bold text-lg">SB25-083958</span>
+                </div>
                 <p className="text-sm text-gray-600">
                   Fully licensed home health care agency in the state of Maryland, 
                   ensuring compliance with all regulatory standards and quality care requirements.
+                  Veteran-owned and certified small business enterprise.
                 </p>
               </div>
             </div>
