@@ -203,11 +203,11 @@ export default function Home() {
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-gray-700 font-medium">VSBE Certification</span>
-                  <span className="text-blue-600 font-bold text-lg">#VB25-083959</span>
+                  <span className="text-blue-600 font-bold text-lg">VB25-083959</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-gray-700 font-medium">MD Veteran Verification</span>
-                  <span className="text-blue-600 font-bold text-lg">#MDVA2025-224</span>
+                  <span className="text-blue-600 font-bold text-lg">MDVA2025-224</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-gray-700 font-medium">SBR Certification</span>

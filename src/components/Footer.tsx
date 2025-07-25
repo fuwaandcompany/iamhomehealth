@@ -31,8 +31,8 @@ export default function Footer() {
               <div className="text-sm text-gray-400">
                 <p className="font-medium text-blue-400">Licensed & Certified</p>
                 <p>RSA License: RSA-02989</p>
-                <p>VSBE Certification: #VB25-083959</p>
-                <p>MD Veteran Verification: #MDVA2025-224</p>
+                <p>VSBE Certification: VB25-083959</p>
+                <p>MD Veteran Verification: MDVA2025-224</p>
                 <p>SBR Certification: SB25-083958</p>
               </div>
             </div>
